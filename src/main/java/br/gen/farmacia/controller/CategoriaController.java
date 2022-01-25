@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
@@ -30,16 +32,35 @@ public class CategoriaController {
 		
 		if(list.isEmpty()) {
 			throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Lista Vazia!");
+			
 		} else {
+			
 			return ResponseEntity.status(200).body(list);
+			
 		}
+		
 	}
 	
 	@GetMapping("/id/{id_categoria}")
 	public ResponseEntity<Categoria> getById(@PathVariable(value = "id_categoria") Long id){
 		return repository.findById(id).map(resp -> ResponseEntity.status(200).body(resp))
 				.orElseGet(() -> {
+					
 					throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Id não encontrado!");
+					
 				});
 	}
+	
+	//POST
+	@PostMapping("/post")
+	public ResponseEntity<Categoria> post(@RequestBody Categoria categoria) {
+		
+		return ResponseEntity.status(201).body(repository.save(categoria));
+		
+	}
+	
+
+	
+	
+	
 }
