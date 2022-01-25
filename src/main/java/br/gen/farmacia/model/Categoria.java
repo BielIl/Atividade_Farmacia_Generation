@@ -44,5 +44,4 @@ public class Categoria {
 		this.requerimento = requerimento;
 	}
 	
-	
 }
