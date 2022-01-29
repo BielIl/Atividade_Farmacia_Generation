@@ -20,6 +20,12 @@ import org.springframework.web.server.ResponseStatusException;
 import br.gen.farmacia.model.Categoria;
 import br.gen.farmacia.repository.CategoriaRepository;
 
+/*
+ * @version v1 - Desenvolvimento Controller (crud básico)
+ * @since 29-01-2022
+ * @author Grupo 2 Turma 42 - Generation Brasil
+ */
+
 @RestController
 @RequestMapping("/categoria")
 @CrossOrigin("*")

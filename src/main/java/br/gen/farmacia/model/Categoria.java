@@ -7,6 +7,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+/*
+ * @version v2 (Desenvolvimento Model Categoria: atributos, anotações e getters/setters)
+ * @since 29-01-2022
+ * @author Grupo 2 Turma 42 - Generation Brasil
+ */
+
 @Entity
 @Table (name = "tbCategoria")
 public class Categoria {
