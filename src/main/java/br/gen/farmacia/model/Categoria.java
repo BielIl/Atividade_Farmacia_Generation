@@ -1,4 +1,4 @@
-package br.gen.farmacia.model;
+	package br.gen.farmacia.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
