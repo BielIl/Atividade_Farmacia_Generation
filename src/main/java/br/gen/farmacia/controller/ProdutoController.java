@@ -19,6 +19,12 @@ import org.springframework.web.server.ResponseStatusException;
 import br.gen.farmacia.model.ProdutoModel;
 import br.gen.farmacia.repository.ProdutoRepository;
 
+/*
+ * @version v1 - Desenvolvimento Controller Produto (crud básico)
+ * @since 29-01-2022
+ * @author Grupo 2 Turma 42 - Generation Brasil
+ */
+
 @RestController
 @RequestMapping("/farmaproduct")
 @CrossOrigin("*")
