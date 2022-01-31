@@ -1,4 +1,4 @@
-package br.gen.farmacia.model;
+	package br.gen.farmacia.model;
 
 
 import java.util.List;
@@ -38,7 +38,7 @@ public class Categoria {
 	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("categoria")
 	private List<ProdutoModel> produto;
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -62,5 +62,14 @@ public class Categoria {
 	public void setRequerimento(String requerimento) {
 		this.requerimento = requerimento;
 	}
+
+	public List<ProdutoModel> getProduto() {
+		return produto;
+	}
+
+	public void setProduto(List<ProdutoModel> produto) {
+		this.produto = produto;
+	}
+	
 	
 }
