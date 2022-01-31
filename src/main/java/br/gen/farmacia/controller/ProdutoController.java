@@ -1,7 +1,6 @@
 package br.gen.farmacia.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,27 +16,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import br.gen.farmacia.model.Categoria;
-import br.gen.farmacia.repository.CategoriaRepository;
+import br.gen.farmacia.model.ProdutoModel;
+import br.gen.farmacia.repository.ProdutoRepository;
 
 /*
- * @version v1 - Desenvolvimento Controller (crud básico)
+ * @version v1 - Desenvolvimento Controller Produto (crud básico)
  * @since 29-01-2022
  * @author Grupo 2 Turma 42 - Generation Brasil
  */
 
 @RestController
-@RequestMapping("/categoria")
+@RequestMapping("/farmaproduct")
 @CrossOrigin("*")
-public class CategoriaController {
+public class ProdutoController {
 
 	@Autowired
-	CategoriaRepository repository;
+	ProdutoRepository repository;
 	
 	//GET
 	@GetMapping("/all")
-	public ResponseEntity<List<Categoria>> getAll(){
-		List<Categoria> list = repository.findAll();
+	public ResponseEntity<List<ProdutoModel>> getAll(){
+		List<ProdutoModel> list = repository.findAll();
 		
 		if(list.isEmpty()) {
 			throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Lista Vazia!");
@@ -50,8 +49,8 @@ public class CategoriaController {
 		
 	}
 	
-	@GetMapping("/id/{id_categoria}")
-	public ResponseEntity<Categoria> getById(@PathVariable(value = "id_categoria") Long id){
+	@GetMapping("/id/{id}")
+	public ResponseEntity<ProdutoModel> getById(@PathVariable(value = "id_produto") Long id){
 		return repository.findById(id).map(resp -> ResponseEntity.status(200).body(resp))
 				.orElseGet(() -> {
 					
@@ -62,17 +61,17 @@ public class CategoriaController {
 	
 	//POST
 	@PostMapping("/post")
-	public ResponseEntity<Categoria> post(@RequestBody Categoria categoria) {
+	public ResponseEntity<ProdutoModel> post(@RequestBody ProdutoModel produto) {
 		
-		return ResponseEntity.status(201).body(repository.save(categoria));
+		return ResponseEntity.status(201).body(repository.save(produto));
 		
 	}
 	
 	//PUT
 	@PutMapping("/edit")
-	public ResponseEntity<Categoria> put(@RequestBody Categoria categoria) {
+	public ResponseEntity<ProdutoModel> put(@RequestBody ProdutoModel produto) {
 		
-		return repository.findById(categoria.getId()).map(resp -> ResponseEntity.status(201).body(resp))
+		return repository.findById(produto.getId()).map(resp -> ResponseEntity.status(201).body(resp))
 				.orElseGet(() -> {
 					
 					throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Id não encontrado!");
@@ -85,7 +84,7 @@ public class CategoriaController {
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<?> delete(@PathVariable Long id){
 		
-		Optional<Categoria> optional = repository.findById(id);
+		java.util.Optional<ProdutoModel> optional = repository.findById(id);
 		
 			if (optional.isPresent()) {
 				
@@ -100,4 +99,5 @@ public class CategoriaController {
 			
 	}
 	
+
 }
