@@ -2,19 +2,20 @@ package br.gen.farmacia.security;
 
 import java.util.Collection;
 
-import org.generation.blogPessoal.model.Usuario;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import br.gen.farmacia.model.Usuario;
 
 public class UserDetailsImp implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
 
-	private String userName;
+	private String email;
 	private String password;
 
 	public UserDetailsImp(Usuario user) {
-		this.userName = user.getUsername();
+		this.email = user.getEmail();
 		this.password = user.getPassword();
 	}
 
@@ -29,14 +30,14 @@ public class UserDetailsImp implements UserDetails {
 
 	@Override
 	public String getPassword() {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stubO
 		return password;
 	}
 
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
-		return userName;
+		return email;
 	}
 
 	@Override
