@@ -1,11 +1,13 @@
 package br.gen.farmacia.model;
 
 import javax.persistence.Entity;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /*
  * @version v2 (Desenvolvimento Model Produto: atributos, anotações e getters/setters)
@@ -20,4 +22,8 @@ public class ProdutoModel {
 	@Id
 	@GeneratedValue  (strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@ManyToOne
+	@JsonIgnoreProperties("produto")
+	private Categoria categoria;
 }
