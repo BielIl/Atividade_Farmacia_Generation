@@ -4,7 +4,7 @@ package br.gen.farmacia.model;
 
 		private String name;
 			
-		private String user;
+		private String email;
 		
 		private String password;
 		
@@ -18,12 +18,12 @@ package br.gen.farmacia.model;
 			this.name = name;
 		}
 
-		public String getUser() {
-			return user;
+		public String getEmail() {
+			return email;
 		}
 
-		public void setUser(String user) {
-			this.user = user;
+		public void setEmail(String email) {
+			this.email = email;
 		}
 
 		public String getPassword() {
@@ -41,8 +41,7 @@ package br.gen.farmacia.model;
 		public void setToken(String token) {
 			this.token = token;
 		}
-		
-		
+
 	}
 
 

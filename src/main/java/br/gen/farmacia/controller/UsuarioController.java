@@ -2,9 +2,6 @@ package br.gen.farmacia.controller;
 
 import java.util.Optional;
 
-import org.generation.blogPessoal.model.Usuario;
-import org.generation.blogPessoal.model.UsuarioLogin;
-import org.generation.blogPessoal.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,25 +11,25 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.gen.farmacia.model.Usuario;
+import br.gen.farmacia.model.UsuarioLogin;
+import br.gen.farmacia.service.UsuarioService;
+
 @RestController
 @RequestMapping("/usuario")
-@CrossOrigin(origins = "*", allowedHeaders = "*" )
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UsuarioController {
 	@Autowired
 	private UsuarioService usuarioService;
-	
-@PostMapping("/logar")
-public ResponseEntity<UsuarioLogin> Autentication(@RequestBody Optional<UsuarioLogin> user){
-	return usuarioService.Logar(user).map(resp -> ResponseEntity.ok(resp))
-			.orElse(ResponseEntity.status(401).build());
-	.orElse(ResponseEntity.status(401).build());
+
+	@PostMapping("/logar")
+	public ResponseEntity<UsuarioLogin> Autentication(@RequestBody Optional<UsuarioLogin> email) {
+		return usuarioService.logar(email).map(resp -> ResponseEntity.ok(resp))
+				.orElse(ResponseEntity.status(401).build());
 	}
 
-		@PostMapping("/cadastrar")	public ResponseEntity<Usuario> Post(@RequestBody Usuario usuario){
-			return ResponseEntity.status(HttpStatus.CREATED)
-					.body(usuarioService.CadastrarUsuario(usuario));
-		}
+	@PostMapping("/cadastrar")
+	public ResponseEntity<Usuario> Post(@RequestBody Usuario usuario) {
+		return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.cadastrarUsuario(usuario));
 	}
-
-
-
+}
