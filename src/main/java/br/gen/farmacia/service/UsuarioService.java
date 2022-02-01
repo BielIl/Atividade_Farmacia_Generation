@@ -41,6 +41,25 @@ public class UsuarioService {
 				email.get().setName(usuario.get().getName());
 
 				return email;
+				}
+			}
+		return null;
+		}
+			
+	public Optional<UsuarioLogin> logar1(Optional<UsuarioLogin> nome) {
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		Optional<Usuario> usuario = repository.findByNome(nome.get().getName());
+
+		if (usuario.isPresent()) {
+			if (encoder.matches(nome.get().getPassword(), usuario.get().getPassword())) {
+				String auth = nome.get().getEmail() + ":" + nome.get().getPassword();
+				byte[] encodedAuth = Base64.encodeBase64(auth.getBytes(Charset.forName("US-ASCII")));
+				String authHeader = "Basic" + new String(encodedAuth);
+
+				nome.get().setToken(authHeader);
+				nome.get().setName(usuario.get().getName());
+
+				return nome;
 			}
 		}
 		return null;

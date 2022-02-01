@@ -15,15 +15,15 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotBlank
 	@Size(min = 2, max = 100)
 	private String name;
-	
+
 	@NotBlank
 	@Size(min = 2, max = 20)
 	private String email;
-	
+
 	@NotBlank
 	@Size(min = 6)
 	private String password;
