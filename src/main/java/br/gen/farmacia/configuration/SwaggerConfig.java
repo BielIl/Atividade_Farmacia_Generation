@@ -18,20 +18,12 @@ public class SwaggerConfig {
 	@Bean
 	public OpenAPI springBlogPessoalOpenAPI() {
 		return new OpenAPI()
-				.info(new Info()
-					.title("Projeto Farmacia")
-					.description("Projeto Farmacia - Generation Brasil")
-					.version("v0.0.1")
-				.license(new License()
-					.name("generation.org.br")
-					.url("http://springdoc.org"))
-				.contact(new Contact()
-					.name("Grupo 2")
-					.url("https://github.com/rafaelq80")
-					.email("grupo2@gmail.com")))
-				.externalDocs(new ExternalDocumentation()
-					.description("Github")
-					.url("https://github.com/conteudoGeneration/"));
+				.info(new Info().title("Projeto Farmacia").description("Projeto Farmacia - Generation Brasil")
+						.version("v0.0.1").license(new License().name("generation.org.br").url("http://springdoc.org"))
+						.contact(new Contact().name("Grupo 2").url("https://github.com/rafaelq80")
+								.email("grupo2@gmail.com")))
+				.externalDocs(new ExternalDocumentation().description("Github")
+						.url("https://github.com/conteudoGeneration/"));
 	}
 
 	@Bean
@@ -60,5 +52,4 @@ public class SwaggerConfig {
 
 	}
 
-	
 }

@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -33,8 +35,13 @@ public class Categoria {
 	private String setor;
 		
 	private String requerimento;
+	
+	@ManyToOne
+	@JoinColumn(name = "fk_usuario")
+	@JsonIgnoreProperties("categoria")
+	private Usuario usuario;
 
-	@NotNull
+	
 	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("categoria")
 	private List<ProdutoModel> produto;
@@ -62,6 +69,14 @@ public class Categoria {
 	public void setRequerimento(String requerimento) {
 		this.requerimento = requerimento;
 	}
+		
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 
 	public List<ProdutoModel> getProduto() {
 		return produto;
@@ -70,6 +85,4 @@ public class Categoria {
 	public void setProduto(List<ProdutoModel> produto) {
 		this.produto = produto;
 	}
-	
-	
 }
