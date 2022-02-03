@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import br.gen.farmacia.model.ProdutoModel;
 import br.gen.farmacia.model.Usuario;
 import br.gen.farmacia.model.UsuarioLogin;
 import br.gen.farmacia.repository.UsuarioRepository;
@@ -26,17 +25,17 @@ import br.gen.farmacia.service.UsuarioService;
 public class UsuarioController {
 	@Autowired
 	private UsuarioService usuarioService;
-	
+
 	@Autowired
 	private UsuarioRepository repository;
-	
+
 	@GetMapping("/id/{id_usuario}")
-	public ResponseEntity<Usuario> getById(@PathVariable(value = "id_usuario") Long id){
+	public ResponseEntity<Usuario> getById(@PathVariable(value = "id_usuario") Long id) {
 		return repository.findById(id).map(resp -> ResponseEntity.status(200).body(resp))
 				.orElseGet(() -> {
-					
+
 					throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Id não encontrado!");
-					
+
 				});
 	}
 
