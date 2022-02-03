@@ -1,5 +1,4 @@
-	package br.gen.farmacia.model;
-
+package br.gen.farmacia.model;
 
 import java.util.List;
 
@@ -13,7 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -24,24 +22,23 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  */
 
 @Entity
-@Table (name = "tbCategoria")
+@Table(name = "tbCategoria")
 public class Categoria {
 
 	@Id
-	@GeneratedValue  (strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotBlank
 	private String setor;
-		
+
 	private String requerimento;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "fk_usuario")
 	@JsonIgnoreProperties("categoria")
 	private Usuario usuario;
 
-	
 	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("categoria")
 	private List<ProdutoModel> produto;
@@ -69,7 +66,7 @@ public class Categoria {
 	public void setRequerimento(String requerimento) {
 		this.requerimento = requerimento;
 	}
-		
+
 	public Usuario getUsuario() {
 		return usuario;
 	}

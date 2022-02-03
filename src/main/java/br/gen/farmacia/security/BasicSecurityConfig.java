@@ -2,7 +2,6 @@ package br.gen.farmacia.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -40,5 +39,6 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userService);
 		auth.inMemoryAuthentication()
-			 .withUser("isalberti").password(senhaEncoder().encode("bebel")).authorities("ADMIN");
-	} }
+				.withUser("isalberti").password(senhaEncoder().encode("bebel")).authorities("ADMIN");
+	}
+}

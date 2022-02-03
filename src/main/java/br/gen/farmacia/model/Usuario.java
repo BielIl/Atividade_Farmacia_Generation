@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -34,7 +33,7 @@ public class Usuario {
 	@NotBlank
 	@Size(min = 6)
 	private String password;
-	
+
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("usuario")
 	private List<Categoria> categoria;
@@ -77,5 +76,5 @@ public class Usuario {
 
 	public void setCategoria(List<Categoria> categoria) {
 		this.categoria = categoria;
-	}	
+	}
 }
