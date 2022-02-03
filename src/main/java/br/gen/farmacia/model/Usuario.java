@@ -18,7 +18,7 @@ public class Usuario {
 
 	@NotBlank
 	@Size(min = 2, max = 100)
-	private String name;
+	private String nome;
 
 	@NotBlank
 	@Size(min = 2, max = 20)
@@ -36,12 +36,12 @@ public class Usuario {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getPassword() {

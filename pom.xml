@@ -14,9 +14,11 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>farmacia</name>
 	<description>atividade farmacia</description>
+
 	<properties>
 		<java.version>11</java.version>
 	</properties>
+
 	<dependencies>
 
 		<dependency>
@@ -27,7 +29,6 @@
 		<dependency>
 			<groupId>commons-codec</groupId>
 			<artifactId>commons-codec</artifactId>
-			<version>1.10</version>
 		</dependency>
 
 		<dependency>
