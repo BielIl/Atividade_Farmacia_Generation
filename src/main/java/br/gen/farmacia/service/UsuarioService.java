@@ -38,7 +38,7 @@ public class UsuarioService {
 				String authHeader = "Basic " + new String(encodedAuth);
 
 				email.get().setToken(authHeader);
-				email.get().setName(usuario.get().getName());
+				email.get().setName(usuario.get().getNome());
 
 				return email;
 				}
@@ -57,7 +57,7 @@ public class UsuarioService {
 				String authHeader = "Basic" + new String(encodedAuth);
 
 				nome.get().setToken(authHeader);
-				nome.get().setName(usuario.get().getName());
+				nome.get().setName(usuario.get().getNome());
 
 				return nome;
 			}
