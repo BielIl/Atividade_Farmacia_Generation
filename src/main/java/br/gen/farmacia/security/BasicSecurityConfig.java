@@ -2,6 +2,7 @@ package br.gen.farmacia.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -13,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @EnableWebSecurity
+
 public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
@@ -26,7 +28,7 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/usuario/logar").permitAll()
-				.antMatchers(HttpMethod.PUT, "/usuario/cadastrar").permitAll()
+				.antMatchers(HttpMethod.POST, "/usuario/cadastrar").permitAll()
 				.anyRequest().authenticated()
 				.and().httpBasic()
 				.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)

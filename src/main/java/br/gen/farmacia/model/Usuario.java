@@ -1,12 +1,19 @@
 package br.gen.farmacia.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "tb_usuarios")
@@ -16,9 +23,9 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotBlank
+	@NotBlank(message = "Minimo 2 letras!")
 	@Size(min = 2, max = 100)
-	private String name;
+	private String nome;
 
 	@NotBlank
 	@Size(min = 2, max = 20)
@@ -27,6 +34,10 @@ public class Usuario {
 	@NotBlank
 	@Size(min = 6)
 	private String password;
+	
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("usuario")
+	private List<Categoria> categoria;
 
 	public Long getId() {
 		return id;
@@ -36,12 +47,12 @@ public class Usuario {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getPassword() {
@@ -60,4 +71,11 @@ public class Usuario {
 		this.email = email;
 	}
 
+	public List<Categoria> getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(List<Categoria> categoria) {
+		this.categoria = categoria;
+	}	
 }

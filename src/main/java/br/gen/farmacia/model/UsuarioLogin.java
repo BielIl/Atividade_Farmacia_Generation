@@ -1,7 +1,6 @@
 package br.gen.farmacia.model;
 
 public class UsuarioLogin {
-
 	private String name;
 
 	private String email;
